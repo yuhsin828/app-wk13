@@ -40,12 +40,10 @@ const ActionScreen = ({ onClose, site }) => {
             <Ionicons name="close-outline" color="gray" size={30} />
          </Pressable>
          <Box borderBottomColor={"white"} w={"15%"} h={1} borderRadius={3} bg="grey" mt={3} alignSelf="center"></Box>
-         <Text fontSize="lg" my={6} textAlign="center">{sna}{snaen.slice(11)}</Text>
+         <Text fontSize="lg" my={6} textAlign="center">{sna.slice(11)}</Text>
          <Box px={6} >
             <Center>
                <Text>{sarea}{ar}</Text>
-               <Text mt={2}>{sareaen}{aren}</Text>
-               {/* <Text mt={2}><Text fontWeight={'bold'}>經度／緯度：</Text>{Number(lng).toFixed(2)}／{Number(lat).toFixed(2)}</Text> */}
                <VictoryPie
                   width={250}
                   height={250}
@@ -64,7 +62,7 @@ const ActionScreen = ({ onClose, site }) => {
                   innerRadius={10}
                />
             </Center>
-            <Text position="absolute" bottom={2} right={6}>{getTime(mday)}</Text>
+            <Text fontSize="xs" color="gray" position="absolute" bottom={2} right={6}>{getTime(mday)}</Text>
          </Box>
       </VStack>
    );

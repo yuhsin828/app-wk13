@@ -89,8 +89,8 @@ export default function MapScreen() {
             style={{ flex: 1 }}
             showsTraffic
             onRegionChangeComplete={onRegionChangeComplete}
-         // provider="google"
-         // customMapStyle={mapStyle}
+            provider="google"
+            customMapStyle={blackMapStyle}
          >
             {(zoomRatio > 0.14) && metro.map((site) => (
                <Marker
@@ -99,7 +99,7 @@ export default function MapScreen() {
                   title={site.name}
                   description={site.address}
                >
-                  <Center bg="#02b57f" borderRadius={50} p={3 * zoomRatio} borderWidth={2* zoomRatio} borderColor="#f2f7f6">
+                  <Center bg="#02b57f" borderRadius={50} p={3 * zoomRatio} borderWidth={2 * zoomRatio} borderColor="#f2f7f6">
                      <Ionicons name={"subway-outline"} size={30 * zoomRatio} color="#f2f7f6" />
                   </Center>
                </Marker>

@@ -1,6 +1,6 @@
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NativeBaseProvider } from 'native-base';
-import MapScreen from './screens/MapScreen';
+import MapScreen from './src/screens/MapScreen';
 
 export default function App() {
   return (
