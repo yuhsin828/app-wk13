@@ -17,7 +17,7 @@ export default (props) => {
           longitude: Number(site.lng),
         }}
         key={site.sno}
-        title={`${site.sna} ${site.sbi}/${site.bemp}`}
+        title={`${site.sna}`}
         description={site.ar}
         onPress={onOpen}
       >
