@@ -5,7 +5,6 @@ import { Box, Center } from 'native-base';
 import * as Location from 'expo-location';
 import * as Device from "expo-device";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-// import Icon from 'react-native-vector-icons/FontAwesome';
 import { getUbikeInfo } from '../api';
 import metroJson from "../json/metro.json";
 import ActionButton from '../components/ActionButton';
@@ -90,8 +89,8 @@ export default function MapScreen() {
             style={{ flex: 1 }}
             showsTraffic
             onRegionChangeComplete={onRegionChangeComplete}
-            // provider="google"
-            // customMapStyle={mapStyle}
+         // provider="google"
+         // customMapStyle={mapStyle}
          >
             {(zoomRatio > 0.14) && metro.map((site) => (
                <Marker
@@ -100,25 +99,17 @@ export default function MapScreen() {
                   title={site.name}
                   description={site.address}
                >
-                  <Center bg="#00e09d" borderRadius={50} p={3 * zoomRatio}>
+                  <Center bg="#02b57f" borderRadius={50} p={3 * zoomRatio} borderWidth={2* zoomRatio} borderColor="#f2f7f6">
                      <Ionicons name={"subway-outline"} size={30 * zoomRatio} color="#f2f7f6" />
                   </Center>
                </Marker>
             ))}
+
             {(zoomRatio > 0.14) && ubike.map((site) => (
-               <Marker
-                  coordinate={{
-                     latitude: Number(site.lat),
-                     longitude: Number(site.lng),
-                  }}
-                  key={site.sno}
-                  title={`${site.sna} ${site.sbi}/${site.bemp}`}
-                  description={site.ar}
-               >
-                  <ActionButton zoomRatio={zoomRatio} site={site} />
-               </Marker>
+               <ActionButton zoomRatio={zoomRatio} site={site} key={site.sno} />
             ))}
          </MapView>
+
          {!onCurrentLocation && (
             <Box
                bg="white"
@@ -135,7 +126,6 @@ export default function MapScreen() {
                   onPress={getLocation}
                />
             </Box>
-
          )}
       </Box>
    );

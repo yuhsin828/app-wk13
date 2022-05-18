@@ -4,18 +4,21 @@ import {
    Center,
    Text, Pressable,
 } from 'native-base';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import { VictoryPie } from 'victory-native';
 
 const ActionScreen = ({ onClose, site }) => {
    const {
       sna,
+      snaen,
       sbi,
       sarea,
+      sareaen,
       mday,
       lat,
       lng,
       ar,
+      aren,
       bemp,
    } = site;
 
@@ -34,37 +37,35 @@ const ActionScreen = ({ onClose, site }) => {
 
       <VStack h="50%" w="100%" bg="blueGray.50" borderRadius={20} >
          <Pressable onPress={onClose} position="absolute" top={2} right={3}>
-            <MaterialCommunityIcons name="close" color="gray" size={30} />
+            <Ionicons name="close-outline" color="gray" size={30} />
          </Pressable>
          <Box borderBottomColor={"white"} w={"15%"} h={1} borderRadius={3} bg="grey" mt={3} alignSelf="center"></Box>
-         <Text fontSize="lg" my={6} textAlign="center">{sna}{" "}站</Text>
+         <Text fontSize="lg" my={6} textAlign="center">{sna}{snaen.slice(11)}</Text>
          <Box px={6} >
-            <Text><Text fontWeight={'bold'}>地址：</Text>{sarea}{" "}{ar}</Text>
-            <Text mt={2}><Text fontWeight={'bold'}>經度/緯度：</Text>{Number(lng).toFixed(2)}/{Number(lat).toFixed(2)}</Text>
-            <Text mt={2}><Text fontWeight={'bold'}>更新時間：</Text>{getTime(mday)}</Text>
             <Center>
+               <Text>{sarea}{ar}</Text>
+               <Text mt={2}>{sareaen}{aren}</Text>
+               {/* <Text mt={2}><Text fontWeight={'bold'}>經度／緯度：</Text>{Number(lng).toFixed(2)}／{Number(lat).toFixed(2)}</Text> */}
                <VictoryPie
                   width={250}
                   height={250}
-                  colorScale={["tomato", "gold"]}
+                  colorScale={["#ffc412", "#edddad"]}
                   data={[
                      { x: 1, y: Number(sbi), label: `可借(${sbi})` },
                      { x: 2, y: Number(bemp), label: `可還(${bemp})` },
                   ]}
                   style={{
-                     data: {
-                        fillOpacity: 0.9, stroke: "#c43a31", strokeWidth: 3
-                     },
                      labels: {
-                        fontSize: 12, fill: "#c43a31",
-                        padding: 10,
-
+                        fontSize: 12, fill: "black",
+                        padding: 8,
                      }
                   }}
+                  padAngle={({ datum }) => datum.y * 0.2}
+                  innerRadius={10}
                />
             </Center>
+            <Text position="absolute" bottom={2} right={6}>{getTime(mday)}</Text>
          </Box>
-
       </VStack>
    );
 };
