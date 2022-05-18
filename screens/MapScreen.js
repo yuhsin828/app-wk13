@@ -5,11 +5,12 @@ import { Box, Center } from 'native-base';
 import * as Location from 'expo-location';
 import * as Device from "expo-device";
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import Icon from 'react-native-vector-icons/FontAwesome';
+// import Icon from 'react-native-vector-icons/FontAwesome';
 import { getUbikeInfo } from '../api';
 import metroJson from "../json/metro.json";
 import ActionButton from '../components/ActionButton';
 import mapStyle from '../mapStyles/mapStyle.json';
+import blackMapStyle from '../mapStyles/blackMapStyle.json';
 
 export default function MapScreen() {
    const [msg, setMsg] = useState("Waiting...");
@@ -89,7 +90,8 @@ export default function MapScreen() {
             style={{ flex: 1 }}
             showsTraffic
             onRegionChangeComplete={onRegionChangeComplete}
-            customMapStyle={mapStyle}
+            // provider="google"
+            // customMapStyle={mapStyle}
          >
             {(zoomRatio > 0.14) && metro.map((site) => (
                <Marker
@@ -98,8 +100,8 @@ export default function MapScreen() {
                   title={site.name}
                   description={site.address}
                >
-                  <Center bg="white" borderRadius={60} p={3 * zoomRatio} borderWidth={2 * zoomRatio} borderColor="black">
-                     <Icon name={"bus"} size={30 * zoomRatio} color="black" />
+                  <Center bg="#00e09d" borderRadius={50} p={3 * zoomRatio}>
+                     <Ionicons name={"subway-outline"} size={30 * zoomRatio} color="#f2f7f6" />
                   </Center>
                </Marker>
             ))}
