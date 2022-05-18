@@ -28,11 +28,6 @@ export default (props) => {
           <ActionScreen onClose={onClose} site={site} />
         </Actionsheet>
       </Marker>
-
-      {/* <Pressable onPress={onOpen}> */}
-
-      {/* </Pressable> */}
-
     </>
   );
 }

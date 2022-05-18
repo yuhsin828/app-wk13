@@ -34,7 +34,6 @@ const ActionScreen = ({ onClose, site }) => {
       return time;
    }
    return (
-
       <VStack h="50%" w="100%" bg="blueGray.50" borderRadius={20} >
          <Pressable onPress={onClose} position="absolute" top={2} right={3}>
             <Ionicons name="close-outline" color="gray" size={30} />
@@ -62,8 +61,8 @@ const ActionScreen = ({ onClose, site }) => {
                   innerRadius={10}
                />
             </Center>
-            <Text fontSize="xs" color="gray" position="absolute" bottom={2} right={6}>{getTime(mday)}</Text>
          </Box>
+         <Text fontSize="xs" color="gray" position="absolute" bottom={6} right={6}>{getTime(mday)}</Text>
       </VStack>
    );
 };
